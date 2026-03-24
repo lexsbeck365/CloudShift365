@@ -774,7 +774,9 @@ input, select, textarea { font: inherit; }
   width: 0%;
   background: var(--grad-main);
   border-radius: 999px;
+  -webkit-transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
   transition: width 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: width;
 }
 
 .vc-pct { font-size: .75rem; font-weight: 600; color: var(--blue-500); text-align: right; }

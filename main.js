@@ -179,8 +179,13 @@ serviceModalLink.addEventListener('click', closeServiceModal);
       const isDone = pct.classList.contains('done');
 
       setTimeout(() => {
-        // Animate the bar
-        fill.style.width = target + '%';
+        // Double rAF ensures iOS WebKit has rendered the initial width:0%
+        // before we set the target, so the CSS transition actually fires.
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            fill.style.width = target + '%';
+          });
+        });
 
         // Count up the percentage label for in-progress rows
         if (!isDone) {
@@ -198,15 +203,21 @@ serviceModalLink.addEventListener('click', closeServiceModal);
     });
   }
 
-  // Trigger once when the dashboard card scrolls into view
+  // Observe the reveal container so the animation only fires once the card
+  // is actually visible (after the reveal fade-in).  Fall back to the card
+  // itself if the parent wrapper isn't found.
+  const observeTarget = dashCard.closest('.reveal') || dashCard;
+  const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
   const dashObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        animateDashboard();
+        // Small extra delay on mobile so the reveal fade has started
+        setTimeout(animateDashboard, isMobile ? 200 : 0);
         dashObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: window.matchMedia('(max-width: 768px)').matches ? 0.15 : 0.5 });
+  }, { threshold: isMobile ? 0.05 : 0.4 });
 
-  dashObserver.observe(dashCard);
+  dashObserver.observe(observeTarget);
 }());
