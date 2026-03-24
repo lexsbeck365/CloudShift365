@@ -206,7 +206,7 @@ serviceModalLink.addEventListener('click', closeServiceModal);
         dashObserver.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: window.matchMedia('(max-width: 768px)').matches ? 0.15 : 0.5 });
 
   dashObserver.observe(dashCard);
 }());

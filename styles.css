@@ -1209,7 +1209,10 @@ input, select, textarea { font: inherit; }
   .services-more-inner { flex-direction: column; text-align: center; }
   .services-more { padding: 32px 24px; }
 
-  .vc-progress-row { grid-template-columns: 100px 1fr 42px; }
+  /* Dashboard card: give shadow layers room so they don't overflow the viewport */
+  .visual-card-stack { margin-right: 12px; }
+  /* Tighten label column so long names fit without awkward wrapping */
+  .vc-progress-row { grid-template-columns: 86px 1fr 38px; font-size: .74rem; }
 
   .cta-banner-actions { flex-direction: column; align-items: stretch; }
   .cta-banner-actions .btn { justify-content: center; }
