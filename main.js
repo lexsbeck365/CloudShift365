@@ -161,3 +161,50 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape') closeService
 
 // Close modal if user taps the "Get a quote" link (smooth scroll handles the rest)
 serviceModalLink.addEventListener('click', closeServiceModal);
+
+// ---- Migration Dashboard animation ----
+(function () {
+  const dashCard = document.querySelector('.visual-card-front');
+  if (!dashCard) return;
+
+  const rows = Array.from(dashCard.querySelectorAll('.vc-progress-row'));
+
+  function animateDashboard() {
+    rows.forEach((row, i) => {
+      const fill   = row.querySelector('.vc-fill');
+      const pct    = row.querySelector('.vc-pct');
+      const target = parseFloat(fill.dataset.target) || 0;
+      const isDone = pct.classList.contains('done');
+
+      setTimeout(() => {
+        // Animate the bar
+        fill.style.width = target + '%';
+
+        // Count up the percentage label for in-progress rows
+        if (!isDone) {
+          const duration = 1400;
+          let startTime  = null;
+          function step(ts) {
+            if (!startTime) startTime = ts;
+            const progress = Math.min((ts - startTime) / duration, 1);
+            pct.textContent = Math.round(progress * target) + '%';
+            if (progress < 1) requestAnimationFrame(step);
+          }
+          requestAnimationFrame(step);
+        }
+      }, i * 350); // stagger each row by 350 ms
+    });
+  }
+
+  // Trigger once when the dashboard card scrolls into view
+  const dashObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateDashboard();
+        dashObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.5 });
+
+  dashObserver.observe(dashCard);
+}());
