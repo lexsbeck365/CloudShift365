@@ -152,7 +152,9 @@ function closeServiceModal() {
 }
 
 document.querySelectorAll('.service-card').forEach(card => {
-  card.addEventListener('click', () => openServiceModal(card));
+  card.addEventListener('click', () => {
+    if (window.innerWidth <= 768) openServiceModal(card);
+  });
 });
 
 serviceModalBackdrop.addEventListener('click', closeServiceModal);
