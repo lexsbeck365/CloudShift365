@@ -51,8 +51,6 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
 });
 
 // ---- Contact form ----
-const FORMSPREE_ID = 'xkoqaqbr'; // Replace with your Formspree form ID
-
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
 const formBtnText = document.getElementById('formBtnText');
@@ -66,20 +64,20 @@ if (contactForm) {
     formSuccess.classList.remove('visible', 'error');
 
     try {
-      const response = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      const response = await fetch('send-mail.php', {
         method: 'POST',
-        headers: { 'Accept': 'application/json' },
         body: new FormData(contactForm)
       });
 
-      if (response.ok) {
+      const data = await response.json();
+
+      if (response.ok && data.ok) {
         formSuccess.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="10"/></svg> Message sent! We\u2019ll be in touch within one business day.';
         formSuccess.classList.add('visible');
         contactForm.reset();
         setTimeout(() => formSuccess.classList.remove('visible'), 6000);
       } else {
-        const data = await response.json();
-        const msg = data.errors ? data.errors.map(e => e.message).join(', ') : 'Submission failed. Please try again.';
+        const msg = data.error || 'Submission failed. Please try again.';
         formSuccess.textContent = msg;
         formSuccess.classList.add('visible', 'error');
       }
