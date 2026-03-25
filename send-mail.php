@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 define('SMTP_HOST',     'smtp.hostinger.com');
 define('SMTP_PORT',     587);
 define('SMTP_USER',     'info@cloudshift365.com');
-define('SMTP_PASS',     'Udontneed2kn0w=');
+define('SMTP_PASS',     '**************=');
 define('MAIL_FROM',     'info@cloudshift365.com');
 define('MAIL_FROM_NAME','CloudShift365');
 define('MAIL_TO',       'info@cloudshift365.com');
