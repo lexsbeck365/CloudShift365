@@ -4,15 +4,16 @@
  * Uses PHPMailer with Hostinger SMTP relay.
  *
  * SETUP:
- *   1. Run: composer install
- *   2. Set SMTP_PASS below (or via environment variable for security).
+ *   1. Upload the PHPMailer/src folder alongside this file.
+ *   2. Set the SMTP_PASS environment variable on your server.
  */
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require __DIR__ . '/vendor/autoload.php';
+require __DIR__ . '/PHPMailer/src/Exception.php';
+require __DIR__ . '/PHPMailer/src/PHPMailer.php';
+require __DIR__ . '/PHPMailer/src/SMTP.php';
 
 header('Content-Type: application/json');
 header('Access-Control-Allow-Origin: https://cloudshift365.com');
@@ -27,10 +28,10 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // ---- Hostinger SMTP config ----
 define('SMTP_HOST',     'smtp.hostinger.com');
-define('SMTP_PORT',     587);
-define('SMTP_USER',     'noreply@cloudshift365.com');
+define('SMTP_PORT',     465);
+define('SMTP_USER',     'info@cloudshift365.com');
 define('SMTP_PASS',     getenv('SMTP_PASS'));
-define('MAIL_FROM',     'noreply@cloudshift365.com');
+define('MAIL_FROM',     'info@cloudshift365.com');
 define('MAIL_FROM_NAME','CloudShift365');
 define('MAIL_TO',       'info@cloudshift365.com');
 
@@ -62,7 +63,7 @@ try {
     $mail->SMTPAuth   = true;
     $mail->Username   = SMTP_USER;
     $mail->Password   = SMTP_PASS;
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
     $mail->Port       = SMTP_PORT;
 
     // Addresses
