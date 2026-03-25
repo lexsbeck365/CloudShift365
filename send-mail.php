@@ -28,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 // ---- Hostinger SMTP config ----
 define('SMTP_HOST',     'smtp.hostinger.com');
 define('SMTP_PORT',     587);
-define('SMTP_USER',     'noreply@cloudshift365.com');
-define('SMTP_PASS',     'YOUR_SMTP_PASSWORD_HERE'); // <-- replace or use getenv()
+define('SMTP_USER',     'info@cloudshift365.com');
+define('SMTP_PASS',     'Udontneed2kn0w='); // <-- replace or use getenv()
 define('MAIL_FROM',     'noreply@cloudshift365.com');
 define('MAIL_FROM_NAME','CloudShift365');
 define('MAIL_TO',       'info@cloudshift365.com');
