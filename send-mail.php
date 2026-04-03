@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // ---- Hostinger SMTP config ----
 define('SMTP_HOST',     'smtp.hostinger.com');
-define('SMTP_PORT',     587);
+define('SMTP_PORT',     465);
 define('SMTP_USER',     'info@cloudshift365.com');
 define('SMTP_PASS',     '**************=');
 define('MAIL_FROM',     'info@cloudshift365.com');
