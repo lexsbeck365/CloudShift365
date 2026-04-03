@@ -670,6 +670,51 @@ input, select, textarea { font: inherit; }
 }
 
 /* =========================================================
+   AI SERVICES
+   ========================================================= */
+.ai-services {
+  padding: 96px 0;
+  background: var(--gray-50);
+}
+
+.ai-tech-bar {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 48px;
+  padding: 20px 28px;
+  background: var(--white);
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius);
+}
+
+.ai-tech-label {
+  font-size: .78rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--gray-400);
+  white-space: nowrap;
+}
+
+.ai-tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.ai-tech-tag {
+  font-size: .8rem;
+  font-weight: 600;
+  color: var(--blue-500);
+  background: rgba(0,82,204,.06);
+  border: 1.5px solid rgba(0,82,204,.15);
+  border-radius: 999px;
+  padding: 4px 14px;
+}
+
+/* =========================================================
    WHY US
    ========================================================= */
 .why-us {
