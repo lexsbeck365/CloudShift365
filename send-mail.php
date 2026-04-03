@@ -73,7 +73,7 @@ try {
 
     // Content
     $mail->isHTML(true);
-    $mail->Subject = "New Contact Form Submission – $firstName $lastName";
+    $mail->Subject = "New Contact Form Submission - $firstName $lastName";
     $mail->Body    = "
         <html><body style='font-family:Arial,sans-serif;color:#333;'>
           <h2 style='color:#1a56db;'>New Contact Form Submission</h2>
