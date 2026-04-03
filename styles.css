@@ -533,10 +533,10 @@ input, select, textarea { font: inherit; }
 }
 
 .service-card:hover .service-num { opacity: 0; }
-.service-card:hover .service-features { position: relative; z-index: 1; }
+.service-card:hover .service-features { position: relative; z-index: 1; max-height: 300px; opacity: 1; margin-bottom: 24px; }
 .service-card:hover .service-features li { color: rgba(255,255,255,.75); }
 .service-card:hover .service-features li::before { background: rgba(255,255,255,.5); }
-.service-card:hover .service-link { color: var(--white); position: relative; z-index: 1; }
+.service-card:hover .service-link { color: var(--white); position: relative; z-index: 1; max-height: 32px; opacity: 1; }
 
 .service-icon {
   width: 56px; height: 56px;
@@ -585,9 +585,13 @@ input, select, textarea { font: inherit; }
 }
 
 .service-features {
-  margin-bottom: 24px;
+  margin-bottom: 0;
   position: relative;
   z-index: 1;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.45s ease, opacity 0.3s ease 0.05s, margin-bottom 0.45s ease;
 }
 
 .service-features li {
@@ -616,7 +620,11 @@ input, select, textarea { font: inherit; }
   color: var(--blue-500);
   position: relative;
   z-index: 1;
-  transition: color var(--transition);
+  display: block;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: color var(--transition), max-height 0.3s ease 0.2s, opacity 0.3s ease 0.2s;
 }
 
 /* Additional migrations CTA */
