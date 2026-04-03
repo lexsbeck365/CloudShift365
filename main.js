@@ -50,6 +50,23 @@ document.querySelectorAll('a[href^="#"]').forEach(link => {
   });
 });
 
+// ---- Phone number auto-formatter ----
+const phoneInput = document.getElementById('phone');
+if (phoneInput) {
+  phoneInput.addEventListener('input', () => {
+    const digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+    let formatted = '';
+    if (digits.length <= 3) {
+      formatted = digits.length ? '(' + digits : '';
+    } else if (digits.length <= 6) {
+      formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3);
+    } else {
+      formatted = '(' + digits.slice(0, 3) + ') ' + digits.slice(3, 6) + '-' + digits.slice(6);
+    }
+    phoneInput.value = formatted;
+  });
+}
+
 // ---- Contact form ----
 const contactForm = document.getElementById('contactForm');
 const formSuccess = document.getElementById('formSuccess');
