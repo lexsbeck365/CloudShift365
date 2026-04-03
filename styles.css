@@ -1264,6 +1264,11 @@ input, select, textarea { font: inherit; }
   .services-more-inner { flex-direction: column; text-align: center; }
   .services-more { padding: 32px 24px; }
 
+  /* AI Services */
+  .ai-services { padding: 60px 0; }
+  .ai-tech-bar { flex-direction: column; align-items: flex-start; gap: 10px; padding: 16px; }
+  .ai-tech-tags { gap: 6px; }
+
   /* Dashboard card: give shadow layers room so they don't overflow the viewport */
   .visual-card-stack { margin-right: 12px; }
   /* Tighten label column so long names fit without awkward wrapping */
@@ -1293,6 +1298,11 @@ input, select, textarea { font: inherit; }
   .service-card { padding: 14px 8px; }
   /* Restore hero-content padding overridden by .container rule above */
   .hero-content { padding: calc(120px + env(safe-area-inset-top, 0px)) 16px 80px; }
+  /* Shrink hero title so "Modernize Your Business" fits on narrow screens */
+  .hero-title { font-size: clamp(1.5rem, 6.5vw, 2.4rem); }
+  /* AI section */
+  .ai-services { padding: 48px 0; }
+  .ai-tech-tag { font-size: .74rem; padding: 3px 10px; }
 }
 
 /* =========================================================
