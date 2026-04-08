@@ -1417,3 +1417,170 @@ input, select, textarea { font: inherit; }
   .service-card { cursor: pointer; touch-action: manipulation; }
   .service-card:active { opacity: 0.85; transform: scale(0.97); }
 }
+
+/* ---- Case Studies ---- */
+.case-studies {
+  padding: 96px 0;
+  background: var(--gray-50);
+}
+
+.case-studies-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.case-card {
+  background: var(--white);
+  border-radius: var(--radius);
+  padding: 32px;
+  box-shadow: var(--shadow-card);
+  border: 1px solid var(--gray-200);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.case-card:hover {
+  box-shadow: var(--shadow-card-hover);
+  transform: translateY(-4px);
+}
+
+.case-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.case-industry-tag {
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--blue-400);
+  background: rgba(0,82,204,.08);
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.case-roi-badge {
+  font-size: .8rem;
+  font-weight: 800;
+  color: var(--white);
+  background: var(--grad-main);
+  padding: 4px 14px;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+.case-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gray-800);
+  line-height: 1.35;
+}
+
+.case-challenge,
+.case-solution {
+  font-size: .9rem;
+  color: var(--gray-600);
+  line-height: 1.65;
+}
+
+.case-challenge strong,
+.case-solution strong {
+  color: var(--gray-700);
+}
+
+.case-metrics {
+  display: flex;
+  gap: 0;
+  border-top: 1px solid var(--gray-200);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 16px 0;
+  margin: 4px 0;
+}
+
+.case-metric {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 0 8px;
+  border-right: 1px solid var(--gray-200);
+}
+
+.case-metric:last-child {
+  border-right: none;
+}
+
+.case-metric-num {
+  font-size: 1.4rem;
+  font-weight: 800;
+  background: var(--grad-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.1;
+}
+
+.case-metric-label {
+  font-size: .7rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.case-quote {
+  font-size: .88rem;
+  color: var(--gray-600);
+  font-style: italic;
+  line-height: 1.6;
+  border-left: 3px solid var(--blue-400);
+  padding-left: 14px;
+  margin-top: auto;
+}
+
+.case-quote-attr {
+  display: block;
+  margin-top: 8px;
+  font-style: normal;
+  font-size: .78rem;
+  font-weight: 600;
+  color: var(--gray-500);
+}
+
+.case-studies-cta {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.case-studies-cta p {
+  font-size: .9rem;
+  color: var(--gray-500);
+  max-width: 520px;
+}
+
+@media (max-width: 1024px) {
+  .case-studies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .case-studies-grid {
+    grid-template-columns: 1fr;
+  }
+  .case-metric-num {
+    font-size: 1.2rem;
+  }
+}
